@@ -1,6 +1,7 @@
 # selenium_actions
 
 # 概要
+
 このプロジェクトは、Seleniumを使用してブラウザの自動化を行うための手順とサンプルコードを提供します。
 
 # 手順
@@ -15,3 +16,10 @@
 1. ソースコードを実行
 # selenium_test.pyを実行してテストを開始
 python selenium_test.py
+
+# 予定
+
+GitHub Actions でテストを実行する
+
+- GitHub Actionsの設定ファイルを作成する
+- テストの自動化を設定する

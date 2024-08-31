@@ -33,11 +33,12 @@ jobs:
           LATEST_DRIVER=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
           wget "https://chromedriver.storage.googleapis.com/$LATEST_DRIVER/chromedriver_linux64.zip"
           unzip chromedriver_linux64.zip
-          # sudo mv chromedriver /usr/local/bin/
-          # sudo chmod +x /usr/local/bin/chromedriver
-          pwd
-          sudo mv chromedriver .
-          sudo chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin/
+
+      - name: Check Chrome version
+        run: google-chrome --version
+
+          sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Run Selenium tests
         run: |

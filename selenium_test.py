@@ -32,25 +32,21 @@ def selenium_test(url, expected_title):
         service = Service("/usr/bin/chromedriver")
         driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    # テスト対象のWebページにアクセス
+    # テスト開始
     driver.get(url)
 
-    # ページのタイトルと要素を取得
     title = driver.title
     h1_text = driver.find_element(By.TAG_NAME, "h1").text
 
-    # タイトルが期待通りかチェック
     assert (
         title == expected_title
     ), f"タイトルが一致しません。取得されたタイトル: {title}"
 
-    # 要素を表示
     print(f"page title: {title}")
     print(f"h1 text:    {h1_text}")
 
     time.sleep(1)
 
-    # WebDriverを終了
     driver.quit()
 
 

@@ -21,16 +21,22 @@ def selenium_test(url, expected_title):
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # ヘッドレスモード
 
-    # ソースコードと同じディレクトリにある chromedriver のパスを取得
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    chrome_driver_path = os.path.join(current_dir, "chromedriver")
-    service = Service(executable_path=chrome_driver_path)
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    if os.name == "nt":
+        # Windows の場合　ここから 4行
+        # ソースコードと同じディレクトリにある chromedriver のパスを取得
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        chrome_driver_path = os.path.join(current_dir, "chromedriver.exe")
+        service = Service(executable_path=chrome_driver_path)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+    elif os.name == "posix":
+        # Ubuntu の場合　ここから 2行
+        service = Service("/usr/bin/chromedriver")
+        driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # テスト対象のWebページにアクセス
     driver.get(url)
 
-    # ページのタイトルを取得
+    # ページのタイトルと要素を取得
     title = driver.title
     h1_text = driver.find_element(By.TAG_NAME, "h1").text
 
@@ -39,6 +45,7 @@ def selenium_test(url, expected_title):
         title == expected_title
     ), f"タイトルが一致しません。取得されたタイトル: {title}"
 
+    # 要素を表示
     print(f"page title: {title}")
     print(f"h1 text:    {h1_text}")
 

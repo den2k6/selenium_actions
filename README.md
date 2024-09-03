@@ -23,3 +23,5 @@
 python selenium_test.py
 
 # 予定
+
+リファクタリング

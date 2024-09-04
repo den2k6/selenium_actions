@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 TARGET_URL = "https://den2k6.github.io/actions_aws_deploy/"
-EXPECTED_TITLE = "AWS deploy test using Action"
+EXPECTED_TITLE = "AWS deploy test using Actions"
 
 
 def selenium_test(url, expected_title):

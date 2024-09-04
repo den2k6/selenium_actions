@@ -39,7 +39,7 @@ def selenium_test(url, expected_title):
 
     assert (
         title == expected_title
-    ), f"タイトルが一致しません。取得されたタイトル: {title}"
+    ), f"Title does not match. Expected: {expected_title}, Actual: {title}"
 
     print(f"page title: {title}")
     print(f"h1 text:    {h1_text}")

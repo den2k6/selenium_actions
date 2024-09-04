@@ -26,11 +26,11 @@ def selenium_test(url, expected_title):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         chrome_driver_path = os.path.join(current_dir, "chromedriver.exe")
         service = Service(executable_path=chrome_driver_path)
-        driver = webdriver.Chrome(service=service, options=chrome_options)
     elif os.name == "posix":
         # Ubuntu の場合
         service = Service("/usr/bin/chromedriver")
-        driver = webdriver.Chrome(service=service, options=chrome_options)
+
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # テスト開始
     driver.get(url)
@@ -44,7 +44,7 @@ def selenium_test(url, expected_title):
     print(f"page title: {title}")
     print(f"h1 text:    {h1_text}")
 
-    time.sleep(1)
+    time.sleep(0)
     driver.quit()
 
 

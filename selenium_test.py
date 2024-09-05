@@ -11,13 +11,13 @@ from selenium.webdriver.chrome.options import Options
 
 
 TARGET_URL = "https://den2k6.github.io/actions_aws_deploy/"
-EXPECTED_TITLE = "AWS deploy test using Actions"
+EXPECTED_H1 = "Deploy to AWS S3 by GitHub Actions"
 
 
-def selenium_test(url, expected_title):
+def selenium_test(url, expected_h1):
     """テストの実行"""
 
-    #  Chromeのオプションを設定
+    #  Selenium の設定
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # ヘッドレスモード
 
@@ -38,8 +38,8 @@ def selenium_test(url, expected_title):
     h1_text = driver.find_element(By.TAG_NAME, "h1").text
 
     assert (
-        title == expected_title
-    ), f"Title does not match. Expected: {expected_title}, Actual: {title}"
+        h1_text == expected_h1
+    ), f"Title does not match. Expected: {expected_h1}, Actual: {h1_text}"
 
     print(f"page title: {title}")
     print(f"h1 text:    {h1_text}")
@@ -49,4 +49,4 @@ def selenium_test(url, expected_title):
 
 
 if __name__ == "__main__":
-    selenium_test(TARGET_URL, EXPECTED_TITLE)
+    selenium_test(TARGET_URL, EXPECTED_H1)

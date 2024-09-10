@@ -22,8 +22,10 @@ def selenium_test(url, expected_h1):
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # ヘッドレスモード
 
-    if os.name == "posix" and platform.system() != "Darwin":
+    # if os.name == "posix" and platform.system() != "Darwin":
+    if platform.system() == "Linux":
         service = Service("/usr/bin/chromedriver")
+    # elif platform.system() == "Darwin":
     elif platform.system() == "Darwin":
         service = Service("/usr/local/bin/chromedriver")
     else:

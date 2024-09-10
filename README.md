@@ -1,10 +1,10 @@
 # selenium_actions
 
-# 概要
+## 概要
 
 このプロジェクトは、Selenium を使用してブラウザの自動化を行うための手順とサンプルコードを提供します。
 
-# 手順
+## 手順
 
 1. 公式サイトから chromedriver をダウンロード
 1. ソースコードと同じディレクトリに chromedriver を配置
@@ -18,10 +18,14 @@
 1. リモートに push する
 
 
-# selenium_test.py を実行してテストを開始
+## selenium_test.py を実行してテストを開始
 
 python selenium_test.py
 
-# 予定
+## 更新履歴
+
+* MacOS の場合に対応
+
+## 予定
 
 リファクタリング

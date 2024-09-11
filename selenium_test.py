@@ -15,17 +15,9 @@ TARGET_URL = "https://den2k6.github.io/actions_aws_deploy/"
 EXPECTED_H1 = "Deploy to AWS S3 by GitHub Actions"
 
 
-def selenium_test(url, expected_h1):
-    """テストの実行"""
-
-    #  Selenium の設定
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # ヘッドレスモード
-
-    # if os.name == "posix" and platform.system() != "Darwin":
+def get_webdriver_path():
     if platform.system() == "Linux":
         service = Service("/usr/bin/chromedriver")
-    # elif platform.system() == "Darwin":
     elif platform.system() == "Darwin":
         service = Service("/usr/local/bin/chromedriver")
     else:
@@ -33,6 +25,26 @@ def selenium_test(url, expected_h1):
         chrome_driver_path = os.path.join(current_dir, "chromedriver.exe")
         service = Service(executable_path=chrome_driver_path)
 
+    return service
+
+
+def selenium_test(url, expected_h1):
+    """テストの実行"""
+
+    #  Selenium の設定
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # ヘッドレスモード
+
+    # if platform.system() == "Linux":
+    #     service = Service("/usr/bin/chromedriver")
+    # elif platform.system() == "Darwin":
+    #     service = Service("/usr/local/bin/chromedriver")
+    # else:
+    #     current_dir = os.path.dirname(os.path.abspath(__file__))
+    #     chrome_driver_path = os.path.join(current_dir, "chromedriver.exe")
+    #     service = Service(executable_path=chrome_driver_path)
+
+    service = get_webdriver_path()
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # テスト開始

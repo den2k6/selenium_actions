@@ -48,8 +48,8 @@ def selenium_test(url, expected_h1):
         h1_text == expected_h1
     ), f"Title does not match. Expected: {expected_h1}, Actual: {h1_text}"
 
-    print(f"page title: {title}")
-    print(f"h1 text:    {h1_text}")
+    print(f"  page title: {title}")
+    print(f"  h1 text:    {h1_text}")
 
     time.sleep(0)
     driver.quit()

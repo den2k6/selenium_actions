@@ -35,7 +35,7 @@ def selenium_test(url, expected_h1):
 
     #  Selenium の設定
     chrome_options = Options()
-    chrome_options.add_argument("--headless") 
+    chrome_options.add_argument("--headless")
     service = get_webdriver_path()
     driver = webdriver.Chrome(service=service, options=chrome_options)
 

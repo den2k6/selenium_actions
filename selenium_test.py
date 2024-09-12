@@ -1,5 +1,5 @@
 """
-このモジュールはSeleniumを使用してWebページのテストを実行します。
+This module uses Selenium to test web pages.
 """
 
 import os
@@ -33,13 +33,13 @@ def get_webdriver_path():
 def selenium_test(url, expected_h1):
     """exec selenium test"""
 
-    #  Selenium の設定
+    #  Set up Selenium
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     service = get_webdriver_path()
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    # テスト開始
+    # Test start
     driver.get(url)
     title = driver.title
     h1_text = driver.find_element(By.TAG_NAME, "h1").text
